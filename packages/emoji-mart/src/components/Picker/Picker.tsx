@@ -16,7 +16,7 @@ const Performance = {
 
 export default class Picker extends Component {
   constructor(props) {
-    super()
+    super(props)
 
     this.observers = []
 
@@ -444,8 +444,8 @@ export default class Picker extends Component {
         e.preventDefault()
         if (this.state.searchResults) {
           this.clearSearch()
-        } else {
-          this.unfocusSearch()
+        } else if (this.props.onClose) {
+          this.state.onClose()
         }
         break
 
@@ -462,13 +462,6 @@ export default class Picker extends Component {
     input.focus()
 
     this.handleSearchInput()
-  }
-
-  unfocusSearch() {
-    const input = this.refs.searchInput.current
-    if (!input) return
-
-    input.blur()
   }
 
   navigate({ e, input, left, right, up, down }) {
