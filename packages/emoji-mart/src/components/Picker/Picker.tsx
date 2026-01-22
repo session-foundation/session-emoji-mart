@@ -445,7 +445,7 @@ export default class Picker extends Component {
         if (this.state.searchResults) {
           this.clearSearch()
         } else if (this.props.onClose) {
-          this.state.onClose()
+          this.props.onClose()
         }
         break
 
