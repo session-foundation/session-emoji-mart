@@ -32,7 +32,6 @@ export default class Picker extends Component {
     return {
       skin: Store.get('skin') || props.skin,
       theme: this.initTheme(props.theme),
-      onClose: props.onClose,
     }
   }
 
@@ -445,7 +444,7 @@ export default class Picker extends Component {
         e.preventDefault()
         if (this.state.searchResults) {
           this.clearSearch()
-        } else {
+        } else if (this.props.onClose) {
           this.state.onClose()
         }
         break
